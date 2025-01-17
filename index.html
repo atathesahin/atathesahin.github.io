@@ -13,11 +13,12 @@
 		}
 		body {
 			font-family: 'Poppins', sans-serif;
-			background-color: #0a0a0a;
+			background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 			color: #ffffff;
 			overflow-x: hidden;
 			scroll-behavior: smooth;
 		}
+		
 		nav {
 			width: 100%;
 			position: fixed;
@@ -136,7 +137,10 @@
 
 <!-- Hero Section -->
 <section id="home" class="section">
-	<img src="images/pic05.jpg" alt="Atailay's Photo" class="profile-photo">
+	<video width="360" height="360" controls>
+		<source src="images/application.mp4" type="video/mp4">
+		Tarayıcınız video etiketini desteklemiyor.
+	</video>
 	<h1>Hello, I'm Atailay</h1>
 	<p>I’m passionate about game development, gaining experience and enjoying myself through creating projects.</p>
 </section>
@@ -144,7 +148,7 @@
 <!-- About Section -->
 <section id="about" class="section">
 	<h1>About Me</h1>
-	<p>Junior game developer skilled in Unity and C#, developing engaging mobile and PC games.</p>
+	<p>Hi! I’m a Digital Game Design student with a growing passion for game development. I’m currently developing games in Unity, focusing on creating smooth and engaging gameplay experiences. I have experience with Maya, Blender, and Level Design, which help me build immersive game environments.</p>
 </section>
 
 <!-- Education Section -->
@@ -154,7 +158,7 @@
 		<!-- Digital Game Design -->
 		<div class="card">
 			<h3>Digital Game Design <br>(Graduating 2025)</h3>
-			<p>University - Istanbul, Türkiye</p>
+			<p>Istinye University - Istanbul, Türkiye</p>
 		</div>
 
 		<!-- Unity Training Program -->
@@ -196,112 +200,76 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="section">
-	<h1>Projects</h1>
-	<div class="content-grid">
-		<div class="card">
-			<!-- Baş Görsel (GIF) -->
+<section id="projects" class="section" style="padding: 60px 20px; background-color: #f9f9f9;">
+	<h1 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #333;">Projects</h1>
+	<div class="content-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
 			<img src="images/hyperstart.gif" alt="Hyper Hero" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-
-			<!-- Başlık -->
-			<h3 style="margin-bottom: 15px;">Hyper Hero (2022)</h3>
-
-			<!-- Açıklama -->
-			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">
-				Hyper Survival is a thrilling survival game set in a mystical world. Players travel through portals to hunt creatures like goblins, golems, and skeletons using modern weapons.
-				I contributed to the game’s design and programming, ensuring an engaging and immersive experience.
-			</p>
-
-			<!-- Özellikler Listesi -->
+			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Hyper Hero (2022)</h3>
+			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size 3</h3>
+			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">Hyper Survival is a thrilling survival game set in a mystical world. Players travel through portals to hunt creatures like goblins, golems, and skeletons using modern weapons. I contributed to the game’s design and programming, ensuring an engaging and immersive experience.</p>
 			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-				<li><b>Level System:</b> Players progress through levels to unlock new and more powerful weapons.</li>
-				<li><b>Weapon Variety:</b> A range of weapons with unique stats and abilities.</li>
-				<li><b>Enemy Diversity:</b> Different types of enemies with distinct behaviors.</li>
-				<li><b>Merchant System:</b> Upgrade skills using gold.</li>
-				<li><b>Power-ups:</b> Temporary boosts like increased speed.</li>
-				<li><b>Portal Exploration:</b> Discover new areas through mystical portals.</li>
+				<li><b>Level System:</b> Unlock new weapons by progressing.</li>
+				<li><b>Weapon Variety:</b> Unique stats and abilities.</li>
+				<li><b>Enemy Diversity:</b> Various enemy behaviors.</li>
+				<li><b>Merchant System:</b> Upgrade skills with gold.</li>
+				<li><b>Power-ups:</b> Temporary boosts.</li>
+				<li><b>Portal Exploration:</b> Discover new areas.</li>
 			</ul>
-
-			<!-- Ekstra Görsel (GIF) -->
 			<img src="images/hypergame.gif" alt="Hyper Hero Gameplay" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-
-			<!-- YouTube Videosu -->
 			<div style="margin-top: 20px;">
-				<iframe width="100%" height="315" src="https://www.youtube.com/embed/To8LK2z51ps"
-						title="Hyper Hero Gameplay" frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen style="border-radius: 8px;"></iframe>
+				<iframe width="100%" height="300" src="https://www.youtube.com/embed/To8LK2z51ps" title="Hyper Hero Gameplay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 8px;"></iframe>
 			</div>
 		</div>
 
-
-
-		<div class="card">
-			<!-- Baş Görsel -->
+		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
 			<img src="images/pic01.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-
-			<!-- Başlık -->
-			<h3 style="margin-bottom: 15px;">Game Jam Project - (Skilled Hub)</h3>
-
-			<!-- Açıklama -->
-			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">
-				In this project, we designed a chaos-themed game within 48 hours as a team of 4 people. I contributed by designing the software and mechanics, assisting my teammates throughout the process.
-				Our game begins with the main character, Lucas, opening his eyes to find monsters in his village. The player must explore the map, discover various weapons, and complete necessary objectives.
-			</p>
-
-			<!-- Özellikler Listesi -->
+			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Game Jam Project - (Skilled Hub)</h3>
+			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size 4</h3>
+			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">We designed a chaos-themed game in 48 hours as a team. I contributed by designing the software and mechanics, assisting my teammates throughout the process.</p>
 			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-				<li>Procedurally generated levels for endless replayability</li>
-				<li>Ghost AI that reacts to player movement and attacks</li>
-				<li>Interactive environment with destructible objects</li>
-				<li>Immersive sound design enhancing the horror experience</li>
+				<li>Procedurally generated levels.</li>
+				<li>Ghost AI reacting to player movement.</li>
+				<li>Interactive environment.</li>
+				<li>Immersive sound design.</li>
 			</ul>
-
-			<!-- Görseller Alt Alta -->
 			<img src="images/pic04.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
 			<img src="images/pic02.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
 			<img src="images/pic03.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px;">
 		</div>
 
-
-		<div class="card">
-			<img src="images/vampiregame.jpg" alt="Vampire Survivors Style Game">
-			<h3>Arcane Survivors</h3>
-			<p>A Vampire Survivors-inspired 3D mobile game with wave-based combat. Key features:</p>
-			<ul>
-				<li>Multiple unique characters with customizable skills</li>
-				<li>Boss battles every 10th wave, rewarding random skills</li>
-				<li>Gold drop and weapon purchasing system via UI</li>
-				<li>Dynamic particle effects and optimized enemy AI</li>
+		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
+			<img src="images/lastsurvivors.gif" alt="Last Survivors" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
+			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Graduation Project - (First Semester)</h3>
+			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size 3</h3>
+			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">Last Survivors is an action-packed survival rogue-like mobile game where players battle endless waves of enemies using diverse characters, weapons, and skills. I led the game's development, focusing on core gameplay mechanics</p>
+			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
+				<li><b>Wave-Based Combat:</b> Increasingly challenging enemy waves to test player skills.</li>
+				<li><b>Weapon Variety:</b> UMelee weapons for aggressive play and magical staves for strategic combat.</li>
+				<li><b>Character Classes:</b> Pirate (high durability, melee combat) and Mage (long-range AoE attacks).</li>
+				<li><b>Enemy Fights:</b> Powerful enemies appear every few waves, requiring strategy and skill combinations.</li>
+				<li><b>Skill System:</b> 9 different skills, each skill reaches max level 4.</li>
 			</ul>
-			<a href="https://play.google.com/store/apps/details?id=arcane.survivors" target="_blank">Download on Google Play</a>
+			<img src="images/lastsurvivors3.gif" alt="Last Survivors" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+			<iframe width="100%" height="300" src="https://www.youtube.com/embed/wW5i0DFsdJ8" title="Hyper Hero Gameplay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 15px;"></iframe>
 		</div>
 
-		<div class="card">
-			<img src="images/runnergame.jpg" alt="3D Runner Game">
-			<h3>Neon Runner</h3>
-			<p>A futuristic 3D endless runner game designed for mobile devices. Features include:</p>
-			<ul>
-				<li>Curved and dynamic tracks for a challenging experience</li>
-				<li>Speed-based coin magnet effect and obstacle avoidance</li>
-				<li>Stylish neon graphics with smooth performance</li>
-				<li>Leaderboard integration for competitive gameplay</li>
-			</ul>
-			<a href="https://github.com/username/neon-runner" target="_blank">View on GitHub</a>
-		</div>
 
-		<div class="card">
-			<img src="images/horrorgame.jpg" alt="School Horror Game">
-			<h3>Silent School</h3>
-			<p>A first-person horror game set in an abandoned school, focusing on psychological horror. Highlights:</p>
-			<ul>
-				<li>Dynamic ghost AI that reacts to player actions</li>
-				<li>Puzzle-solving mechanics intertwined with exploration</li>
-				<li>Immersive sound design for a terrifying atmosphere</li>
-				<li>Multiple endings based on player choices</li>
+		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
+			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">My Other Works</h3>
+			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
 			</ul>
-			<a href="https://itch.io/jam/silent-school" target="_blank">Play Now</a>
+			<img src="images/btr.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+			<video width="450" height="450" controls>
+				<source src="images/mayaa.mp4" type="video/mp4">
+				Tarayıcınız video etiketini desteklemiyor.
+			</video>
+			<video width="450" height="450" controls>
+				<source src="images/CrowdRunner.mp4" type="video/mp4">
+				Tarayıcınız video etiketini desteklemiyor.
+			</video>
 		</div>
+		
 	</div>
 </section>
 
