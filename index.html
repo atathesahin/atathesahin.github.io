@@ -3,288 +3,156 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Atailay's Portfolio</title>
+	<title>Atailay Şahin | Game Developer Portfolio</title>
+
+	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
+		:root {
+			--primary-bg: #1a1a2e;
+			--accent-bg: #16213e;
+			--highlight: #e94560;
+			--text-light: #f5f5f5;
+			--text-dark: #333;
+			--card-bg: #ffffff;
+			--radius: 10px;
+			--transition: 0.3s ease;
+			--max-width: 1080px;
 		}
+
+		*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 		body {
 			font-family: 'Poppins', sans-serif;
-			background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-			color: #ffffff;
+			background: var(--primary-bg);
+			color: var(--text-light);
 			overflow-x: hidden;
-			scroll-behavior: smooth;
 		}
-		
+		a { text-decoration: none; color: inherit; }
+
+		/* Navigation */
 		nav {
-			width: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 20px 50px;
-			background-color: rgba(10, 10, 10, 0.9);
-			backdrop-filter: blur(10px);
-			z-index: 1000;
+			position: fixed; top: 0; width: 100%;
+			background: var(--accent-bg);
+			display: flex; justify-content: space-between; align-items: center;
+			padding: 1rem 2rem; z-index: 100;
 		}
-		nav a {
-			text-decoration: none;
-			color: #ffffff;
-			margin: 0 15px;
-			font-weight: 600;
-			transition: color 0.3s ease-in-out;
+		.logo { font-size: 1.5rem; font-weight: 600; color: var(--highlight); }
+		.nav-links { display: flex; gap: 1.5rem; }
+		.nav-links a { font-weight: 500; transition: color var(--transition); }
+		.nav-links a:hover { color: var(--highlight); }
+		.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+		.burger div { width: 25px; height: 3px; background: var(--text-light); border-radius: 5px; transition: transform var(--transition); }
+
+		/* Fade-up animation */
+		.fade-up {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 		}
-		nav a:hover {
-			color: #00bfff;
+		.fade-up.show {
+			opacity: 1;
+			transform: translateY(0);
 		}
-		.section {
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			padding: 120px 50px 50px;
+
+		/* Hero Banner */
+		header.hero {
+			height: 80vh;
+			background: url('images/hero-bg.jpg') center/cover no-repeat;
+			display: flex; align-items: center; justify-content: center;
+			position: relative; text-align: center;
 		}
-		.section h1 {
-			font-size: 3.5rem;
-			margin-bottom: 20px;
-		}
-		.section p {
-			font-size: 1.2rem;
-			max-width: 700px;
-			line-height: 1.6;
-		}
-		.content-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 30px;
-			width: 85%;
-			margin-top: 40px;
-		}
-		.card {
-			background-color: #1a1a1a;
-			padding: 25px;
-			border-radius: 12px;
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-			transition: transform 0.3s, box-shadow 0.3s;
-		}
-		.card:hover {
-			transform: translateY(-10px) scale(1.02);
-			box-shadow: 0 8px 30px rgba(0, 191, 255, 0.7);
-		}
-		.card img {
-			width: 100%;
-			border-radius: 10px;
-		}
-		footer {
-			text-align: center;
-			padding: 20px;
-			background-color: #111;
-		}
-		footer a {
-			color: #ffffff;
-			margin: 0 10px;
-			text-decoration: none;
-		}
-		/* Responsive Design */
+		header.hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+		.hero-content { position: relative; z-index: 1; }
+		.hero-content h1, .hero-content p { opacity: 0; animation: fadeIn 1s 0.5s forwards; }
+		.hero-content p { animation-delay: 0.8s; }
+		@keyframes fadeIn { to { opacity: 1; } }
+
+		/* Sections */
+		section { padding: 5rem 1rem; }
+		.container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
+		section h2 { font-size: 2rem; text-align: center; margin-bottom: 2rem; position: relative; }
+		section h2::after { content: ''; width: 80px; height: 3px; background: var(--highlight); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+		/* Grid Cards */
+		.grid { display: grid; gap: 2rem; }
+		.grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+		.card { background: var(--card-bg); color: var(--text-dark); border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: transform var(--transition), box-shadow var(--transition); }
+		.card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
+		.card img, .card-content img { width: 100%; object-fit: cover; border-radius: var(--radius); margin-bottom: 1rem; }
+		.card-content iframe, .card-content video { width: 100%; border-radius: var(--radius); margin-bottom: 1rem; }
+		.card-content { padding: 1.5rem; }
+		.card-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+		.card-content .meta { font-size: 0.85rem; color: #777; margin-bottom: 1rem; text-transform: uppercase; }
+		.card-content p { margin-bottom: 1rem; }
+		.card-content ul { list-style: inside disc; color: #555; margin-bottom: 1rem; }
+
+		/* Projects Section */
+		#projects { background: var(--accent-bg); color: var(--text-light); }
+		#projects .card { background: var(--primary-bg); }
+
+		/* Contact & Footer */
+		#contact p a { color: var(--highlight); }
+		footer { text-align: center; padding: 1.5rem; background: var(--accent-bg); color: #aaa; }
+
+		/* Mobile */
 		@media (max-width: 768px) {
-			nav {
-				padding: 10px 15px;
-				flex-direction: column;
-			}
-			nav a {
-				font-size: 12px;
-				margin: 5px 8px;
-			}
-			.section h1 {
-				font-size: 2rem;
-			}
-			.section p {
-				font-size: 0.9rem;
-			}
-			.content-grid {
-				grid-template-columns: 1fr;
-				gap: 15px;
-			}
-			.card {
-				padding: 15px;
-			}
-			.card img {
-				border-radius: 6px;
-			}
+			.nav-links { position: fixed; top: 0; right: -100%; height: 100vh; background: var(--accent-bg); flex-direction: column; padding-top: 5rem; padding-left: 2rem; gap: 2rem; transition: right var(--transition); }
+			.nav-links.active { right: 0; }
+			.burger { display: flex; }
 		}
 	</style>
 </head>
 <body>
-
-<!-- Navigation -->
 <nav>
-	<a href="#home">Atailay</a>
-	<div>
-		<a href="#about">About</a>
-		<a href="#education">Education</a>
-		<a href="#experience">Experience</a>
-		<a href="#projects">Projects</a>
-		<a href="#contact">Contact</a>
+	<div class="logo">Atailay Şahin</div>
+	<div class="nav-links" id="navLinks">
+		<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
 	</div>
+	<div class="burger" id="burger"><div></div><div></div><div></div></div>
 </nav>
-
-<!-- Hero Section -->
-<section id="home" class="section">
-	<h1>Hello, I'm Atailay</h1>
-	<p>I’m passionate about game development, gaining experience and enjoying myself through creating projects.</p>
-</section>
-
-<!-- About Section -->
-<section id="about" class="section">
-	<h1>About Me</h1>
-	<p>Hi! I’m a Digital Game Design student with a growing passion for game development. I’m currently developing games in Unity, focusing on creating smooth and engaging gameplay experiences. I have experience with Maya, Blender, and Level Design, which help me build immersive game environments.</p>
-</section>
-
-<!-- Education Section -->
-<section id="education" class="section">
-	<h1>Education</h1>
-	<div class="content-grid">
-		<!-- Digital Game Design -->
-		<div class="card">
-			<h3>Digital Game Design <br>(Graduating 2025)</h3>
-			<p>Istinye University - Istanbul, Türkiye</p>
-		</div>
-
-		<!-- Unity Training Program -->
-		<div class="card">
-			<h3>Unity Training Program</h3>
-			<p>Skilled Hub - 6-Month Game Development Program</p>
-		</div>
-
-		<!-- English Education -->
-		<div class="card">
-			<h3>English Education</h3>
-			<ul style="list-style: none; padding: 0; line-height: 1.6;">
-				<li>📍 Malta English Path - 2-Month English Education (2023)</li>
-				<li>📍 St Giles Brighton - 6-Week English Education (2024)</li>
-				<li>📍 Oxford International Language School - 1-Month IELTS Course (2024)</li>
-			</ul>
-		</div>
+<header class="hero">
+	<div class="hero-content">
+		<h1>Ata Şahin</h1>
+		<p>Digital Game Design Student & Unity Developer</p>
 	</div>
-</section>
+</header>
+<section id="about"><div class="container fade-up"><h2>About Me</h2><p>I'm a passionate game developer crafting immersive 3D experiences with Unity, Maya, and Blender. I focus on seamless gameplay mechanics and engaging level design.</p></div></section>
+<section id="education"><div class="container fade-up"><h2>Education</h2><div class="grid grid-3">
+	<div class="card fade-up"><div class="card-content"><h3>Digital Game Design</h3><p>İstinye University, Istanbul (Graduating 2025)</p></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Unity Training</h3><p>Skilled Hub - 6-Month Program</p></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>English Courses</h3><ul><li>Malta English Path (2023)</li><li>St Giles Brighton (2024)</li><li>Oxford International (2024)</li></ul></div></div>
+</div></div></section>
+<section id="experience"><div class="container fade-up"><h2>Technical Experience</h2><div class="grid grid-3">
+	<div class="card fade-up"><div class="card-content"><h3>Unity & C#</h3><p>Developed game mechanics and interactive systems with a focus on fluid gameplay.</p></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Maya & Blender</h3><p>Created 3D models and environments to enhance visual fidelity.</p></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Game Design</h3><p>Designed levels, progression systems, and UI/UX frameworks.</p></div></div>
+</div></div></section>
+<section id="projects"><div class="container fade-up"><h2>Projects</h2><div class="grid grid-3">
+	<div class="card fade-up"><div class="card-content"><h3>Hyper Hero (2022)</h3><div class="meta">Team Size: 3 | Role: Programmer & Designer</div><img src="images/hyperstart.gif" alt="Hyper Hero Preview"><p>Hyper Survival is a thrilling survival game set in a mystical world. Players travel through portals to hunt goblins, golems, and skeletons using modern weapons.</p><ul><li>Level System: Unlock new weapons by progressing.</li><li>Weapon Variety: Unique stats and abilities.</li><li>Enemy Diversity: Various enemy behaviors.</li><li>Merchant System: Upgrade skills with gold.</li><li>Power-ups: Temporary boosts.</li><li>Portal Exploration: Discover new areas.</li></ul><img src="images/hypergame.gif" alt="Hyper Hero Gameplay"><iframe src="https://www.youtube.com/embed/To8LK2z51ps" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Game Jam Project (2024)</h3><div class="meta">Team Size: 4 | Duration: 48h</div><img src="images/pic01.jpg" alt="Game Jam 1"><p>We designed a chaos-themed game in 48 hours at Skilled Hub. I contributed software design and mechanics, assisting my teammates throughout the process.</p><ul><li>Skeleton AI reacting to player movement.</li><li>Interactive environment.</li></ul><img src="images/pic04.jpg" alt="Game Jam 2"><img src="images/pic02.jpg" alt="Game Jam 3"><img src="images/pic03.jpg" alt="Game Jam 4"></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Last Survivors (2025)</h3><div class="meta">Team Size: 3 | Role: Lead Developer</div><img src="images/lastsurvivors.gif" alt="Last Survivors Preview"><p>Last Survivors is an action-packed survival rogue-like mobile game where players battle endless waves of enemies using diverse characters, weapons, and skills.</p><ul><li>Wave-Based Combat: Increasingly challenging enemy waves.</li><li>Weapon Variety: Melee weapons and magical staves.</li><li>Character Classes: Pirate (melee) and Mage (ranged).</li><li>Boss Encounters: Powerful foes every few waves.</li><li>Skill System: 9 different skills, each upgradable to level 4.</li></ul><img src="images/lastsurvivors3.gif" alt="Last Survivors Gameplay"><iframe src="https://www.youtube.com/embed/wW5i0DFsdJ8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>
+	<div class="card fade-up"><div class="card-content"><h3>Other Works</h3><div class="meta">2024 &amp; 2023</div><video controls src="images/CrowdRunner.mp4"></video><h4>Crowd Runner Demo (2024)</h4><video controls src="images/mayaa.mp4"></video><h4>Maya Animation Showcase (2023)</h4><img src="images/btr.jpg" alt="Other Work Image"></div></div>
+</div></div></section>
+<section id="contact"><div class="container fade-up"><h2>Contact</h2><p>Email: <a href="mailto:karahan615@hotmail.com">karahan615@hotmail.com</a></p><p>LinkedIn: <a href="https://www.linkedin.com/in/atailay-sahin-83b1a6253" target="_blank">atailay-sahin-83b1a6253</a></p></div></section>
+<footer class="fade-up"><p>&copy; 2025 Atailay Şahin</p></footer>
+<script>
+	const burger = document.getElementById('burger');
+	const navLinks = document.getElementById('navLinks');
+	burger.addEventListener('click', () => { navLinks.classList.toggle('active'); burger.classList.toggle('toggle'); });
 
-
-<!-- Experience Section -->
-<section id="experience" class="section">
-	<h1>Technical Experience</h1>
-	<div class="content-grid">
-		<div class="card">
-			<h3>Unity & C#</h3>
-			<p>Developed game mechanics and interactive systems using Unity and C#, with a focus on smooth gameplay.</p>
-		</div>
-		<div class="card">
-			<h3>Maya & Blender</h3>
-			<p>Created 3D models and game environments using Maya and Blender to enhance visual quality and gameplay experience.</p>
-		</div>
-		<div class="card">
-			<h3>Game Design</h3>
-			<p>Designed gameplay mechanics, level design, and progression systems.</p>
-		</div>
-	</div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="section" style="padding: 60px 20px; background-color: #f9f9f9;">
-	<h1 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #333;">Projects</h1>
-	<div class="content-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
-			<img src="images/hyperstart.gif" alt="Hyper Hero" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Hyper Hero (2022)</h3>
-			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size 3</h3>
-			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">Hyper Survival is a thrilling survival game set in a mystical world. Players travel through portals to hunt creatures like goblins, golems, and skeletons using modern weapons. I contributed to the game’s design and programming, ensuring an engaging and immersive experience.</p>
-			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-				<li><b>Level System:</b> Unlock new weapons by progressing.</li>
-				<li><b>Weapon Variety:</b> Unique stats and abilities.</li>
-				<li><b>Enemy Diversity:</b> Various enemy behaviors.</li>
-				<li><b>Merchant System:</b> Upgrade skills with gold.</li>
-				<li><b>Power-ups:</b> Temporary boosts.</li>
-				<li><b>Portal Exploration:</b> Discover new areas.</li>
-			</ul>
-			<img src="images/hypergame.gif" alt="Hyper Hero Gameplay" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-			<div style="margin-top: 20px;">
-				<iframe width="100%" height="300" src="https://www.youtube.com/embed/To8LK2z51ps" title="Hyper Hero Gameplay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 8px;"></iframe>
-			</div>
-		</div>
-
-		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
-			<img src="images/pic01.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Game Jam Project (2024) - (Skilled Hub)</h3>
-			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size: 4</h3>
-			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">We designed a chaos-themed game in 48 hours as a team. I contributed by designing the software and mechanics, assisting my teammates throughout the process.</p>
-			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-				<li>Skeleton AI reacting to player movement.</li>
-				<li>Interactive environment.</li>
-			</ul>
-			<img src="images/pic04.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-			<img src="images/pic02.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-			<img src="images/pic03.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px;">
-		</div>
-
-		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
-			<img src="images/lastsurvivors.gif" alt="Last Survivors" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">Graduation Project (2025) - (First Semester)</h3>
-			<h3 style="margin-bottom: 15px; font-size: 15px; color: #222;">Team Size: 3</h3>
-			<p style="text-align: justify; line-height: 1.8; margin-bottom: 15px;">Last Survivors is an action-packed survival rogue-like mobile game where players battle endless waves of enemies using diverse characters, weapons, and skills. I led the game's development, focusing on core gameplay mechanics</p>
-			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-				<li><b>Wave-Based Combat:</b> Increasingly challenging enemy waves to test player skills.</li>
-				<li><b>Weapon Variety:</b> Melee weapons for aggressive play and magical staves for strategic combat.</li>
-				<li><b>Character Classes:</b> Pirate (melee combat) and Mage (range combat).</li>
-				<li><b>Enemy Fights:</b> Powerful enemies appear every few waves, requiring strategy and skill combinations.</li>
-				<li><b>Skill System:</b> 9 different skills, each skill reaches max level 4.</li>
-			</ul>
-			<img src="images/lastsurvivors3.gif" alt="Last Survivors" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-			<iframe width="100%" height="300" src="https://www.youtube.com/embed/wW5i0DFsdJ8" title="Hyper Hero Gameplay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 15px;"></iframe>
-		</div>
-
-
-		<div class="card" style="background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: #333; font-size: 16px;">
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">My Other Works</h3>
-			<ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-			</ul>
-			<video width="450" height="450" controls>
-				<source src="images/CrowdRunner.mp4" type="video/mp4">
-				Tarayıcınız video etiketini desteklemiyor.
-			</video>
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">2024</h3>v
-			<video width="450" height="450" controls>
-				<source src="images/mayaa.mp4" type="video/mp4">
-				Tarayıcınız video etiketini desteklemiyor.
-			</video>
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">2023</h3>
-			<img src="images/btr.jpg" alt="Game Jam" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-			<h3 style="margin-bottom: 15px; font-size: 24px; color: #222;">2023</h3>
-			
-			
-		</div>
-		
-	</div>
-</section>
-
-
-
-<!-- Contact Section -->
-<section id="contact" class="section">
-	<h1>Contact</h1>
-	<p>Email: <a href="mailto:karahan615@hotmail.com">karahan615@hotmail.com</a></p>
-	<a href="https://www.linkedin.com/in/atailay-sahin-83b1a6253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">LinkedIn</a>
-</section>
-
-<!-- Footer -->
-<footer>
-	<p>&copy; 2025 Atailay. All Rights Reserved.</p>
-</footer>
-
+	// Scroll animation observer
+	const faders = document.querySelectorAll('.fade-up');
+	const options = { threshold: 0.2 };
+	const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('show');
+				obs.unobserve(entry.target);
+			}
+		});
+	}, options);
+	faders.forEach(fader => observer.observe(fader));
+</script>
 </body>
 </html>
